@@ -34,7 +34,7 @@ def plot_graph(func):
         ya = []
         for elem in x:
             ya.append(linearithmic(elem, *params))
-    plt.figure(figsize=[20, 12])
+    plt.figure(figsize=[10, 6])
     plt.xlabel("Время (секунды)")
     plt.ylabel("Размерность вектора v")
     plt.plot(x, average_elapsed_time, label="Экспериментальные результаты")
