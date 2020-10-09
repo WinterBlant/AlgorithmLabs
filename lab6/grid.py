@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import networkx as ntx
+import time
 
 
 def dist(a, b):
@@ -39,23 +40,35 @@ colors = [G[u][v]['color'] for u, v in G.edges()]
 ntx.draw(G, pos, node_size=500,  with_labels=True, node_color=color_map, width=1, edge_color=colors, font_size=9)
 plt.savefig("grid.png", dpi=1000, quality=95)
 plt.show()
+elapsed_time = []
 start = (0, 5)
 end = (7, 1)
+t0 = time.perf_counter()
 shortest_path = ntx.astar_path(G, start, end, dist)
+elapsed_time.append(time.perf_counter() - t0)
 print(shortest_path)
 start = (4, 2)
 end = (8, 9)
+t0 = time.perf_counter()
 shortest_path = ntx.astar_path(G, start, end, dist)
+elapsed_time.append(time.perf_counter() - t0)
 print(shortest_path)
 start = (1, 3)
 end = (2, 4)
+t0 = time.perf_counter()
 shortest_path = ntx.astar_path(G, start, end, dist)
+elapsed_time.append(time.perf_counter() - t0)
 print(shortest_path)
 start = (9, 0)
 end = (0, 9)
+t0 = time.perf_counter()
 shortest_path = ntx.astar_path(G, start, end, dist)
+elapsed_time.append(time.perf_counter() - t0)
 print(shortest_path)
 start = (8, 3)
 end = (1, 6)
+t0 = time.perf_counter()
 shortest_path = ntx.astar_path(G, start, end, dist)
+elapsed_time.append(time.perf_counter() - t0)
 print(shortest_path)
+print(sum(elapsed_time) / 5)
